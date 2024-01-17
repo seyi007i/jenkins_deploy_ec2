@@ -11,15 +11,17 @@ pipeline {
             }
         }
 
-       /* stage (deploy_to_ec2) {
+        stage (deploy_to_ec2) {
             steps {
                 script {
-                    def cp_html = 'sudo cp -r /home/ubuntu/* /var/www/html/'
-                    sshagent(['ec2-key']) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.194.76.102 ${cp_html}"
+                    def cp_html = 'sudo apt update && sudo apt install apache2 -y'
+                    /*'sudo cp -r /home/ubuntu/* /var/www/html/'  */
+                    sshagent(['85268afc-de55-4937-8067-5b04062c4d28']) {
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.254.127 ${cp_html}"
+                        sh "scp -o StrictHostKeyChecking=no -r 2137_barista_cafe/* ubuntu@16.171.254.127:/home/ubuntu/"
                     }
                 }
             }
-        } */
+        } 
     }
 }
