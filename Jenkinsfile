@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo "Pull source code from Git"
-                    git branch: 'jenkins', url: 'https://github.com/seunayolu/jenkins_deploy_ec2.git'
+                    git branch: 'jenkins', url: 'https://github.com/seyi007i/jenkins_deploy_ec2.git'
                 }
             }
         }
