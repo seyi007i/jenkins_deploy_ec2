@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage (deploy_to_ec2) {
+       /* stage (deploy_to_ec2) {
             steps {
                 script {
                     def cp_html = 'sudo cp -r /home/ubuntu/* /var/www/html/'
@@ -20,6 +20,6 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
     }
 }
