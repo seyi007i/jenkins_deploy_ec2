@@ -16,7 +16,7 @@ pipeline {
                 script {
                     def cp_html = 'sudo apt update && sudo apt install apache2 -y'
                     /*'sudo cp -r /home/ubuntu/* /var/www/html/'  */
-                    sshagent(['85268afc-de55-4937-8067-5b04062c4d28']) {
+                    sshagent(['ubuntu']) {
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.99 ${cp_html}"
                         sh "scp -o StrictHostKeyChecking=no -r 2137_barista_cafe/* ubuntu@172.31.34.99:/home/ubuntu/"
                     }  
