@@ -1,8 +1,7 @@
 pipeline {
     agent any
-
     stages {
-        stage ('fetch code') {
+        stage('fetch code') {
             steps {
                 script {
                     echo "Pull source code from Git"
@@ -10,8 +9,7 @@ pipeline {
                 }
             }
         }
-
-        stage (deploy_to_ec2) {
+        stage('deploy_to_ec2') {
             steps {
                 script {
                     def cp_html = 'sudo apt update && sudo apt install apache2 -y'
@@ -19,9 +17,9 @@ pipeline {
                     sshagent(['ubuntu']) {
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@13.48.25.25 ${cp_html}"
                         sh "scp -o StrictHostKeyChecking=no -r 2137_barista_cafe/* ubuntu@13.48.25.25:/home/ubuntu/"
-                    }  
+                    }
                 }
             }
-        } 
+        }
     }
 }
